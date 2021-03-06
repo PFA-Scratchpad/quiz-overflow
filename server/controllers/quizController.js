@@ -1,4 +1,4 @@
-const db = require('/model/model'); //update with conneect location later
+const db = require('../models/quizModels'); //update with conneect location later
 
 /*Express - create controller file for middleware 
 functions. create a function to read data from database 
@@ -6,15 +6,15 @@ functions. create a function to read data from database
 */
 const quizerController = {};
 
-quizerController.getQuestions = (req, res, next) => {
-    const queryQestions = `SELECT ...
-                        FROM...
-                        ON`
+quizerController.getQuestion = (req, res, next) => {
+    const queryQestion = `SELECT *
+                        FROM quiz_question`
 
-    db.query(queryQestions)
+    db.query(queryQestion)
       .then(result =>{
           //WHAT WILL WE DO WITH THE RESULTS OF QUERY
-          res.locals.questions = ?;// TBD
+          console.log(result)
+          res.locals.question = result// TBD
           return next();
       })
       .catch(err => next(err));
@@ -26,7 +26,7 @@ quizerController.getChoices = (req, res, next) =>{
                             ON`
     db.query(queryChoices)
       .then(result =>{
-          res.locals.choices = ?; //TBD
+          res.locals.choices = result //TBD
           return next();
       })
       .catch(err => next(err));
