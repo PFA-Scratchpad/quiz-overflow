@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
+import CardContainer from './CardContainer';
 const MainContainer = (props) => {
     return (
         <div>
-        <p>Suhh duhd</p>
+            <p>MainContainer Render</p>
+        <CardContainer />
         </div>
     )
 }
