@@ -1,0 +1,13 @@
+{
+  "question": "some stringsssss",
+  "answer": "matches one of the strings in choices array",
+  "choices": [ "string1", "string2", "etc", "..."]
+}
+
+
+
+res.locals.question
+res.locals.choices
+res.locals.answer
+
+
