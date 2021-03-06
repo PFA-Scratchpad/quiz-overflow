@@ -16,7 +16,6 @@ app.get('/', (req,res)=> {
 })
 
 app.get('/quizoverflow', quizerController.getQuestion, (req,res)=>{
-    //dummy function, placeholder for information to be sent back to client
     res.status(200)
     res.json(res.locals)
 })
