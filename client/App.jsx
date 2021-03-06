@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 // import MainContainer from './MainContainer';
-import * as actions from './actions/actions.js';
+import MainContainer from './containers/MainContainer';
 const App = () => {
-  return (
-<div>
-  <button onClick={() => dispatchEvent(actions.defaultAction())}/>
-</div>
+  return ( 
+
+<MainContainer />
+
   );
 }
 /* class App extends Component {
