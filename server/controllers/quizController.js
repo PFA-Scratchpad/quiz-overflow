@@ -1,33 +1,42 @@
-const db = require('../models/quizModels'); //update with conneect location later
-
-/*Express - create controller file for middleware 
-functions. create a function to read data from database 
-(need to have database set up first) and send as response
-*/
+const db = require('../models/quizModels'); 
 const quizerController = {};
 
 quizerController.getQuestion = (req, res, next) => {
+    console.log('get question fired');
+     //grab random record from quiz qestion table
     const queryQestion = `SELECT *
-                        FROM quiz_question`
+                        FROM quiz_question
+                        ORDER BY RANDOM()
+                        LIMIT 1`
 
     db.query(queryQestion)
       .then(result =>{
-          //WHAT WILL WE DO WITH THE RESULTS OF QUERY
-          console.log(result)
-          res.locals.question = result// TBD
+            //create const to hold value of qestion ID
+            const RandQuestionId = result.rows[0]._id;
+            //create const to hold value of question text
+            const RandQuestionText = result.rows[0].text;
+          res.locals.question = RandQuestionText
+          console.log(RandQuestionId, `${res.locals.question}`);
+            //selected id,text, and iscorrect from quiz questions table, only grabing questions which match random question ID
+        const queryChoices =`SELECT 
+                                c._id, c.text, c.is_correct
+                            FROM
+                                quiz_question_choices c
+                            WHERE
+                            c.quiz_question_id = ${RandQuestionId}`
+            
+            db.query(queryChoices)
+            .then(Qresult =>{
+                //choices const holds array of questions
+                const choices = Qresult.rows;
+
+                const answer = Qresult.rows.filter(e =>{
+                    if(e.is_correct === true) return e});
+                    res.locals.choices = choices; 
+                console.log(choices, answer[0]);
+            })
           return next();
       })
       .catch(err => next(err));
 };
-
-quizerController.getChoices = (req, res, next) =>{
-    const queryChoices = `SELECT ...
-                            FROM...
-                            ON`
-    db.query(queryChoices)
-      .then(result =>{
-          res.locals.choices = result //TBD
-          return next();
-      })
-      .catch(err => next(err));
-}
+module.exports = quizerController
