@@ -1,0 +1,19 @@
+import { Component } from 'react';
+
+class Signin extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <form>
+        <input name="username" placeholder="Username" type="text" />
+        <input name="password" placeholder="Password" type="password" />
+        <input type="submit" name="submit" value="Sign in" />
+      </form>
+    );
+  }
+}
+
+export default Signin;
