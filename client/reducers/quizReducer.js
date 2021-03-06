@@ -16,10 +16,15 @@ const initialState = {
 const quizReducer = (state = initialState, action) => {
 
     switch(action.type){
-        case types.DEFAULT_ACTION: {
+        case types.CORRECT_CHOICE: {
             return {
                 ...state,
-                count: state.count + 1,
+                correctAnswers: state.correctAnswers + 1,
+            }
+        }
+        case types.WRONG_CHOICE {
+            return {
+                ...state,
             }
         }
         default:{
