@@ -19,21 +19,19 @@ quizerController.getQuestion = (req, res, next) => {
           console.log(RandQuestionId, `${res.locals.question}`);
             //selected id,text, and iscorrect from quiz questions table, only grabing questions which match random question ID
         const queryChoices =`SELECT 
-                                c._id, c.text, c.is_correct
+                                c._id, 
+                                c.text, 
+                                c.is_correct
                             FROM
                                 quiz_question_choices c
                             WHERE
                             c.quiz_question_id = ${RandQuestionId}`
-            
+    
             db.query(queryChoices)
             .then(Qresult =>{
                 //choices const holds array of questions
-                const choices = Qresult.rows;
-
-                const answer = Qresult.rows.filter(e =>{
-                    if(e.is_correct === true) return e});
-                    res.locals.choices = choices; 
-                console.log(choices, answer[0]);
+                res.locals.choices = Qresult.rows;
+                console.log(res.locals.choices)
             })
           return next();
       })
