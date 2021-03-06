@@ -10,7 +10,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?/,
+        test: /.(jsx|js)$/,
         exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
@@ -28,7 +28,10 @@ module.exports = {
   devServer: {
     publicPath: '/build/',
     proxy: {
-      '*': 'http://localhost:3000',
+      '/': 'http://localhost:3000',
     },
   },
+  resolve: {
+    extensions: ['.js', '.jsx']
+  }
 };
