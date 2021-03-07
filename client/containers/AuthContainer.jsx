@@ -1,19 +1,35 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Signin from '../components/Signin';
+import Login from '../components/Login';
 import Signup from '../components/Signup';
 
 const mapStateToProps = state => ({
-  signedIn: state.auth.signedIn,
+  loggedIn: state.auth.loggedIn,
   showSignup: state.auth.showSignup,
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleSignin: e => {},
-  handleSignup: e => {},
-  goToSignin: () => {},
-  goToSignup: () => {},
+  handleLogin: e => {
+    e.preventDefault();
+    e.persist();
+    dispatch();
+  },
+  handleSignup: e => {
+    e.preventDefault();
+    e.persist();
+    dispatch();
+  },
+  goToLogin: e => {
+    e.preventDefault();
+    e.persist();
+    dispatch();
+  },
+  goToSignup: e => {
+    e.preventDefault();
+    e.persist();
+    dispatch();
+  },
 });
 
 class AuthContainer extends Component {
@@ -23,7 +39,7 @@ class AuthContainer extends Component {
 
   render() {
     return (
-      <div>{this.props.state.auth.showSignup ? <Signup /> : <Signin />}</div>
+      <div>{this.props.state.auth.showSignup ? <Signup /> : <Login />}</div>
     );
   }
 }
