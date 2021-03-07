@@ -1,13 +1,10 @@
 import { combineReducers } from 'redux';
 import quizReducer from './quizReducer';
-import signup from './signupReducer';
-import login from './loginReducer';
+import authReducer from './authReducer';
 
 const reducers = combineReducers({
-  signup,
-  login,
+  auth: authReducer,
   quiz: quizReducer,
 });
 
 export default reducers;
-
