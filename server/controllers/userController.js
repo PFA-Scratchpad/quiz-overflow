@@ -3,10 +3,8 @@ const db = require('../models/quizModels');
 const userController = {};
 
 userController.createUser = (req, res, next) => {
-  // console.log('req body', req.body);
   const username = req.body.username;
   const password = req.body.password;
-  // console.log('user and pass', username, password);
   //check if username already exists
   const checkUserAlreadyExistsQuery = `SELECT username FROM users WHERE username = '${username}'`;
   db.query(checkUserAlreadyExistsQuery, (err0, queryRes0) => {
@@ -15,7 +13,6 @@ userController.createUser = (req, res, next) => {
       return next(err0);
     } else {
       // if user already exists, return next
-      // console.log('queryRes0 row length', queryRes0.rows.length);
       if (queryRes0.rows.length) {
         res.locals.alreadyExists = true;
         return next();
@@ -27,7 +24,6 @@ userController.createUser = (req, res, next) => {
             console.log('err in createUserQuery ', err);
             return next(err);
           } else {
-            // grab _id from newly created user record
             const addedUserQuery = `SELECT _id FROM users WHERE username = '${username}'`;
             db.query(addedUserQuery, (err2, queryRes2) => {
               if (err) {
@@ -36,7 +32,6 @@ userController.createUser = (req, res, next) => {
               } else {
                 res.locals.userRecord = queryRes2.rows[0];
                 res.locals.loggedIn = true;
-                // console.log(res.locals.id);
                 return next();
               }
             });
