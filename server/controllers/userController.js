@@ -34,7 +34,7 @@ userController.createUser = (req, res, next) => {
                 console.log('err in addedUserQuery ', err2);
                 return next(err2);
               } else {
-                res.locals.id = queryRes2.rows[0]._id;
+                res.locals.userRecord = queryRes2.rows[0];
                 res.locals.loggedIn = true;
                 // console.log(res.locals.id);
                 return next();

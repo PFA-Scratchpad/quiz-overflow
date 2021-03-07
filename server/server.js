@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
 app.post(
   '/signup',
   userController.createUser,
+  cookieController.setSSIDCookie,
   sessionController.startSession,
   (req, res) => {
     // on failed signup, send boolean false - to update
@@ -43,15 +44,15 @@ app.post(
       // on failed sign in, send boolean false- to update
       return res.status(200).json('Incorrect username/password');
     // on successful sign in, send boolean true - to update
-    res.status(200).json(res.locals.userRecord);
+    res.status(200).json('Log in successful');
   }
 );
 
 // to send quiz data after isLoggedIn after merging with Dwayne's middleware
 app.get('/quizoverflow', sessionController.isLoggedIn, (req, res) => {
-  console.log('session loggedIn', res.locals.loggedIn);
+  console.log('session cookieSessionMatch', res.locals.cookieSessionMatch);
   if (!res.locals.cookieSessionMatch) res.status(200).json('Invalid session');
-  res.status(200).json('Active session');
+  res.status(200).json(res.locals);
 });
 
 app.use((req, res, next) => {
