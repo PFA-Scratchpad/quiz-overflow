@@ -2,11 +2,10 @@ import {
   POST_LOGIN_REQUEST,
   POST_LOGIN_SUCCESS,
   POST_LOGIN_FAILURE,
-  POST_LOGIN_STARTED,
 } from './actionTypes';
 
-export const postLogin = ({ username: password }) => dispatch => {
-  dispatch(postLoginStarted());
+export const postLogin = ({ username, password }) => dispatch => {
+  dispatch(postLoginRequest());
   fetch('/login', {
     method: 'POST',
     headers: { 'Content-Type': 'application/JSON' },
@@ -26,8 +25,8 @@ export const postLogin = ({ username: password }) => dispatch => {
     });
 };
 
-const postLoginStarted = () => ({
-  type: POST_LOGIN_STARTED,
+const postLoginRequest = () => ({
+  type: POST_LOGIN_REQUEST,
 });
 
 const postLoginSuccess = loggedIn => ({

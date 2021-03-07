@@ -2,11 +2,10 @@ import {
   POST_SIGNUP_REQUEST,
   POST_SIGNUP_SUCCESS,
   POST_SIGNUP_FAILURE,
-  POST_SIGNUP_STARTED,
 } from './actionTypes';
 
-export const postSignup = ({ username: password }) => dispatch => {
-  dispatch(postSignupStarted());
+export const postSignup = ({ username, password }) => dispatch => {
+  dispatch(postSignupRequest());
   fetch('/signup', {
     method: 'POST',
     headers: { 'Content-Type': 'application/JSON' },
@@ -26,8 +25,8 @@ export const postSignup = ({ username: password }) => dispatch => {
     });
 };
 
-const postSignupStarted = () => ({
-  type: POST_SIGNUP_STARTED,
+const postSignupRequest = () => ({
+  type: POST_SIGNUP_REQUEST,
 });
 
 const postSignupSuccess = loggedIn => ({
