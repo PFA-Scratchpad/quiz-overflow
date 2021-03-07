@@ -3,7 +3,8 @@ import * as types from '../actions/actionTypes';
 const initialState = {
   loggedIn: true,
 };
-const loginReducer = (state = initialState, action) => {
+
+export const loginReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.POST_LOGIN_REQUEST: {
       return {
@@ -13,13 +14,13 @@ const loginReducer = (state = initialState, action) => {
     case types.POST_LOGIN_SUCCESS: {
       return {
         ...state,
-        signedIn: action.payload,
+        loggedIn: action.payload,
       };
     }
     case types.POST_LOGIN_FAILURE: {
       return {
         ...state,
-        signedIn: action.payload,
+        loggedIn: action.payload,
       };
     }
     default: {
@@ -27,5 +28,3 @@ const loginReducer = (state = initialState, action) => {
     }
   }
 };
-
-export default loginReducer;
