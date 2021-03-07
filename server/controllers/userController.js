@@ -3,8 +3,7 @@ const db = require('../models/quizModels');
 const userController = {};
 
 userController.createUser = (req, res, next) => {
-  const username = req.body.username;
-  const password = req.body.password;
+  const { username, password } = req.body;
   //check if username already exists
   const checkUserAlreadyExistsQuery = `SELECT username FROM users WHERE username = '${username}'`;
   db.query(checkUserAlreadyExistsQuery, (err0, queryRes0) => {
@@ -43,8 +42,7 @@ userController.createUser = (req, res, next) => {
 };
 
 userController.verifyUser = (req, res, next) => {
-  const username = req.body.username;
-  const password = req.body.password;
+  const { username, password } = req.body;
 
   const verifyUserQuery = `SELECT _id, username FROM users WHERE username = '${username}' AND password = '${password}'`;
   db.query(verifyUserQuery, (err, queryRes) => {

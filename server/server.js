@@ -33,7 +33,7 @@ app.post(
         .status(200)
         .json({ message: 'Username already taken!', loggedIn: false });
     // on successful signup, send boolean true
-    res.status(200).json({ message: 'New user added!', loggedIn: true });
+    return res.status(200).json({ message: 'New user added!', loggedIn: true });
   }
 );
 
@@ -49,7 +49,9 @@ app.post(
         .status(200)
         .json({ message: 'Incorrect username/password', loggedIn: false });
     // on successful sign in, send boolean true - to update
-    res.status(200).json({ message: 'Log in successful', loggedIn: true });
+    return res
+      .status(200)
+      .json({ message: 'Log in successful', loggedIn: true });
   }
 );
 
@@ -61,19 +63,21 @@ app.get(
     console.log('session cookieSessionMatch', res.locals.cookieSessionMatch);
     // after frontend is ready to test, see if we can redirect to '/' in the case a session expires
     // after logging in or if we need to send a res.locals with empty key values for question and choices.
-    if (!res.locals.cookieSessionMatch) res.status(200).json('Invalid session');
-    res.status(200).json(res.locals);
+    if (!res.locals.cookieSessionMatch)
+      return res.status(200).json('Invalid session');
+    return res.status(200).json(res.locals);
   }
 );
 
 app.use((req, res, next) => {
-  res.status(404).send('Not Found');
+  return res.status(404).send('Not Found');
 });
 
 app.use((err, req, res, next) => {
   console.log('error handler', err);
-  res.status(500).send('Internal Server Error');
+  return res.status(500).send('Internal Server Error');
 });
 
-app.listen(3000);
-console.log('Server listening on port 3000');
+app.listen(3000, () => {
+  console.log('Server listening on port 3000');
+});
