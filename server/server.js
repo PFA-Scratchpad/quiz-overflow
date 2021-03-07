@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 
 const userController = require('./controllers/userController');
 const cookieController = require('./controllers/cookieController');
+const sessionController = require('./controllers/sessionController');
 
 const app = express();
 
@@ -19,29 +20,38 @@ app.get('/', (req, res) => {
   return res.status(200).sendFile(path.resolve(__dirname, '../index.html'));
 });
 
-app.post('/signup', userController.createUser, (req, res) => {
-  // on failed signup, send boolean false
-  if (res.locals.alreadyExists)
-    return res.status(200).json('Username already taken!');
-  // on successful signup, send boolean true
-  res.status(200).json('New user added!');
-});
+app.post(
+  '/signup',
+  userController.createUser,
+  sessionController.startSession,
+  (req, res) => {
+    // on failed signup, send boolean false - to update
+    if (res.locals.alreadyExists)
+      return res.status(200).json('Username already taken!');
+    // on successful signup, send boolean true - to update
+    res.status(200).json('New user added!');
+  }
+);
 
 app.post(
   '/login',
   userController.verifyUser,
   cookieController.setSSIDCookie,
+  sessionController.startSession,
   (req, res) => {
     if (!res.locals.loggedIn)
+      // on failed sign in, send boolean false- to update
       return res.status(200).json('Incorrect username/password');
+    // on successful sign in, send boolean true - to update
     res.status(200).json(res.locals.userRecord);
   }
 );
 
-app.get('/quizoverflow', (req, res) => {
-  //dummy function, placeholder for information to be sent back to client
-  res.status(200);
-  res.send();
+// to send quiz data after isLoggedIn after merging with Dwayne's middleware
+app.get('/quizoverflow', sessionController.isLoggedIn, (req, res) => {
+  console.log('session loggedIn', res.locals.loggedIn);
+  if (!res.locals.cookieSessionMatch) res.status(200).json('Invalid session');
+  res.status(200).json('Active session');
 });
 
 app.use((req, res, next) => {
