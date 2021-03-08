@@ -26,10 +26,9 @@ export const getHighScore = () => dispatch => {
     dispatch({type: types.HIGHSCORE_REQUEST})
     fetch('/high-score')
     .then(res => res.json())
-        .then((res) => console.log('score from db', res.highScore))
-        .then(res => dispatch({
+    .then(res => dispatch({
             type: types.HIGHSCORE_RECEIVED,
-            payload: res,
+            payload: res.highScore,
         }));
 };
 
@@ -37,6 +36,7 @@ export const updateHighScore = (score) => dispatch => {
     dispatch({type: types.UPDATING_HIGHSCORE})
     fetch('/high-score', {
         method: 'put',
+        headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ score: score }),
     })
     .then(res => res.json())

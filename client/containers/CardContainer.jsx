@@ -25,7 +25,7 @@ class CardContainer extends Component {
     }
 
     componentDidMount () {
-        this.props.getHighScore;
+        this.props.getHighScore();
         }
 
     render() {

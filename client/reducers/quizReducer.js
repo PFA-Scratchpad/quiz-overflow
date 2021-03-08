@@ -46,6 +46,7 @@ const quizReducer = (state = initialState, action) => {
               }
             };
         case types.HIGHSCORE_RECEIVED: {
+          console.log('highscore payload', action.payload)
           let highScore = action.payload;
           return{
             ...state,
