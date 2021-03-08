@@ -1,18 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+import AuthContainer from './AuthContainer';
 import CardContainer from './CardContainer';
 
-class MainContainer extends Component {
-    constructor(props) {
-        super(props);
-    }
-    render(){ 
-    return (
-        <div>
-            <p>MainContainer Render</p>
-        <CardContainer />
-        </div>
-        )
-    };
+const mapStateToProps = state => ({
+  loggedIn: state.auth.loggedIn,
+});
+
+const MainContainer = props => {
+  const auth = props.loggedIn ? (
+    <CardContainer />
+  ) : (
+    <AuthContainer />
+  );
+
+  return auth;
 };
 
-export default MainContainer;
+export default connect(mapStateToProps)(MainContainer);
