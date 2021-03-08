@@ -13,7 +13,7 @@ npm i
 npm run build
 ```
 
-Create a `.env` file in the root directory of the project to store the ElephanQL database URI.
+Create a `.env` file in the root directory of the project to store the ElephantQL database URI.
 Please ask @john-li7 for the creds.
 
 ```
