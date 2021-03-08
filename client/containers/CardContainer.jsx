@@ -20,19 +20,20 @@ class CardContainer extends Component {
     }
  
     render() {
-        console.log('props in cardcontainer', this.props)
+        //console.log('props in cardcontainer', this.props)
         return(
             <div>
             <Card 
             correctAnswers={this.props.correctAnswers}
             correctChoice={this.props.correctChoice}
             cardsThisSession={this.props.cardsThisSession}
+            card={this.props.card}
             />
             <div>
             <p>Stats Render Here</p>
             <p>Correct: {this.props.correctAnswers}</p>
             <p>Total Questions: {this.props.cardsThisSession}</p>
-            <button>Gets Another Question</button>
+            <button onClick={() => this.props.getNewCard()}>Gets Another Question</button>
             </div>
             </div>
         )

@@ -22,16 +22,16 @@ const Card = (props) => (
      };
  }}>
     <div>
-    <label>Question text here.</label><br></br>
+    <label>{props.card.question}</label><br></br>
     <br></br>
-  <input type="radio" name="quiz1" value="choice1" iscorrect='true'/> choice1<br></br>
+  <input type="radio" name="quiz" value="choice1" iscorrect={`${props.card.choices[0].isCorrect}`}/> {props.card.choices[0].text}<br></br>
   <br></br>
-  <input type="radio" name="quiz1" value="choice2" iscorrect='false'/> choice2<br></br>
+  <input type="radio" name="quiz" value="choice2" iscorrect={`${props.card.choices[1].isCorrect}`}/> {props.card.choices[1].text}<br></br>
   <br></br>
-  <input type="radio" name="quiz1" value="choice3" iscorrect='false'/> choice3<br></br>
+  <input type="radio" name="quiz" value="choice3" iscorrect={`${props.card.choices[2].isCorrect}`}/> {props.card.choices[2].text}<br></br>
   <br></br>
-  <input type="radio" name="quiz1" value="choice4" iscorrect='false'/> choice4<br></br>
-  </div>
+  <input type="radio" name="quiz" value="choice4" iscorrect={`${props.card.choices[3].isCorrect}`}/> {props.card.choices[3].text}<br></br>
+  </div><br></br>
   <input type='submit' value='submit'/>
 </form>
 

@@ -1,12 +1,12 @@
 import * as types from '../actions/actionTypes';
 /* initialState.card is a dummy value. Needs to be changed when backend connected */
 const initialState = {
-  card: { question: 'This will be a question',
+  card: { question: 'This will be a question.',
           choices: [
-            {id: 1, text: 'string', isCorrect: true},
-            {id: 2, text: 'string', isCorrect: false},
-            {id: 3, text: 'string', isCorrect: false},
-            {id: 4, text: 'string', isCorrect: false}
+            {id: 1, text: 'string1', isCorrect: true},
+            {id: 2, text: 'string2', isCorrect: false},
+            {id: 3, text: 'string3', isCorrect: false},
+            {id: 4, text: 'string4', isCorrect: false}
             ],
           answer: 0,
         },
@@ -25,8 +25,12 @@ const quizReducer = (state = initialState, action) => {
             }
         }
         case types.GET_NEW_CARD: {
+          let card = action.payload
+          let cardsThisSession = state.cardsThisSession + 1;
               return{
-                ...state
+                ...state,
+                card,
+                cardsThisSession,
               }
             }
         default:{
