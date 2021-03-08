@@ -30,7 +30,8 @@ class CardContainer extends Component {
             />
             <div>
             <p>Stats Render Here</p>
-            <p>{this.props.correctAnswers}</p>
+            <p>Correct: {this.props.correctAnswers}</p>
+            <p>Total Questions: {this.props.cardsThisSession}</p>
             <button>Gets Another Question</button>
             </div>
             </div>
