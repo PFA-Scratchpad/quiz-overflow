@@ -5,6 +5,7 @@ import {
   POST_SIGNUP_REQUEST,
   POST_SIGNUP_SUCCESS,
   POST_SIGNUP_FAILURE,
+  SHOW_SIGNUP,
 } from './actionTypes';
 
 export const postLogin = ({ username, password }) => dispatch => {
@@ -75,4 +76,9 @@ const postSignupSuccess = loggedIn => ({
 const postSignupFailure = err => ({
   type: POST_SIGNUP_FAILURE,
   payload: err,
+});
+
+export const showSignup = toggle => ({
+  type: SHOW_SIGNUP,
+  payload: toggle,
 });

@@ -42,6 +42,12 @@ const authReducer = (state = initialState, action) => {
         loggedIn: action.payload,
       };
     }
+    case types.SHOW_SIGNUP: {
+      return {
+        ...state,
+        showSignup: action.payload,
+      };
+    }
     default: {
       return state;
     }

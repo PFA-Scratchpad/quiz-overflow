@@ -33,12 +33,12 @@ const mapDispatchToProps = dispatch => ({
   goToLogin: e => {
     e.preventDefault();
     e.persist();
-    dispatch();
+    dispatch(actions.showSignup(false));
   },
   goToSignup: e => {
     e.preventDefault();
     e.persist();
-    dispatch();
+    dispatch(actions.showSignup(true));
   },
 });
 
@@ -48,9 +48,12 @@ class AuthContainer extends Component {
   }
 
   render() {
-    return (
-      <div>{this.props.state.auth.showSignup ? <Signup /> : <Login />}</div>
+    let form = this.props.showSignup ? (
+      <Signup {...this.props} />
+    ) : (
+      <Login {...this.props} />
     );
+    return form;
   }
 }
 
