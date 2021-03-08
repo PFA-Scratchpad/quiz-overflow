@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Card from '../components/Card';
-import { correctChoice, getNewCard } from '../actions/actions';
+import { correctChoice, getNewCard, updateHighScore, getHighScore, newHighScore } from '../actions/actions';
 
 const mapStateToProps = state => ({
     card: state.quiz.card,
@@ -13,19 +13,30 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
     getNewCard, 
-    correctChoice, 
+    correctChoice,
+    getHighScore, 
+    updateHighScore,
+    newHighScore,
 }
 
 class CardContainer extends Component {
     constructor(props){
         super(props);
     }
- 
+
+    componentDidMount () {
+        this.props.getHighScore();
+        }
+
     render() {
-        //console.log('props in cardcontainer', this.props)
+        console.log('props in cardcontainer', this.props)
         return(
             <div>
             <Card 
+            currentScore={this.props.currentScore}
+            newHighScore={this.props.newHighScore}
+            highScore={this.props.highScore}
+            updateHighScore={this.props.updateHighScore}
             correctAnswers={this.props.correctAnswers}
             correctChoice={this.props.correctChoice}
             cardsThisSession={this.props.cardsThisSession}
@@ -40,5 +51,8 @@ class CardContainer extends Component {
         )
     }
 }
+
+
+
 /*  Once props are mapped connect will be used here  */
 export default connect(mapStateToProps, mapDispatchToProps)(CardContainer);

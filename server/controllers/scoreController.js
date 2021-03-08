@@ -22,6 +22,8 @@ scoreController.getHighScore = (req, res, next) => {
 
 scoreController.updateHighScore = (req, res, next) => {
   if (res.locals.cookieSessionMatch) {
+    console.log(req.body)
+    console.log(typeof(req.body.score))
     if (req.body.score > res.locals.highScore) {
       const updateScoreQuery = `UPDATE high_score SET high_score = ${req.body.score} WHERE users_id = ${req.cookies.ssid}`;
       db.query(updateScoreQuery, (err, queryRes) => {

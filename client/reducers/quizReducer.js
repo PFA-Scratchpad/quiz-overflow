@@ -27,22 +27,47 @@ const quizReducer = (state = initialState, action) => {
                 correctAnswers,
                 currentScore,
             }
-        }
+        };
+        case types.NEW_HIGHSCORE: {
+          let highScore = action.payload;
+          return{
+            ...state,
+            highScore,
+          }
+        };
         case types.NEW_CARD_RECEIVED: {
-          let card = action.payload
+          let card = action.payload;
+          console.log('card at reducer:',card)
           let cardsThisSession = state.cardsThisSession + 1;
               return{
                 ...state,
                 card,
                 cardsThisSession,
               }
-            }
+            };
+        case types.HIGHSCORE_RECEIVED: {
+          console.log('highscore payload', action.payload)
+          let highScore = action.payload;
+          return{
+            ...state,
+            highScore,
+          }
+        };
+        case types.HIGHSCORE_UPDATED: {
+          return {...state}
+        };
+        case types.UPDATING_HIGHSCORE: {
+          return {...state}
+        };
         case types.NEW_CARD_REQUEST: {
           return {...state}
-        }
+        };
+        case types.HIGHSCORE_REQUEST: {
+          return {...state}
+        };
         default:{
             return {...state}
-        }
+        };
     };
   };
 
