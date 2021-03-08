@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import * as actions from '../actions/authActions';
 
 import Login from '../components/Login';
 import Signup from '../components/Signup';
@@ -12,12 +13,22 @@ const mapDispatchToProps = dispatch => ({
   handleLogin: e => {
     e.preventDefault();
     e.persist();
-    dispatch();
+    dispatch(
+      actions.postLogin({
+        username: e.target.children.username.value,
+        password: e.target.children.password.value,
+      })
+    );
   },
   handleSignup: e => {
     e.preventDefault();
     e.persist();
-    dispatch();
+    dispatch(
+      actions.postSignup({
+        username: e.target.children.username.value,
+        password: e.target.children.password.value,
+      })
+    );
   },
   goToLogin: e => {
     e.preventDefault();

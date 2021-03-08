@@ -7,11 +7,14 @@ class Signup extends Component {
 
   render() {
     return (
-      <form>
-        <input name="username" placeholder="Username" type="text" />
-        <input name="password" placeholder="Password" type="password" />
-        <input type="submit" value="Sign up" />
-      </form>
+      <div id="signup">
+        <form id="signupForm" onSubmit={this.props.handleSignup}>
+          <input name="username" placeholder="Username" type="text" />
+          <input name="password" placeholder="Password" type="password" />
+          <input type="submit" value="Sign up" />
+        </form>
+        <a onClick={this.props.goToLogin}>Have an account already?</a>
+      </div>
     );
   }
 }

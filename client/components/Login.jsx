@@ -7,11 +7,16 @@ class Login extends Component {
 
   render() {
     return (
-      <form>
-        <input name="username" placeholder="Username" type="text" />
-        <input name="password" placeholder="Password" type="password" />
-        <input type="submit" name="submit" value="Sign in" />
-      </form>
+      <div id="login">
+        <form id="loginForm" onSubmit={this.props.handleLogin}>
+          <input name="username" placeholder="Username" type="text" />
+          <input name="password" placeholder="Password" type="password" />
+          <input type="submit" name="submit" value="Sign in" />
+        </form>
+        <a onClick={this.props.goToSignup} name="#">
+          Need an account?
+        </a>
+      </div>
     );
   }
 }
