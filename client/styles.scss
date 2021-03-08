@@ -1,4 +1,82 @@
-title {
-    color: #1670c4;
-    background-color:#37492f;
+body {
+  background-color: #0e6e96;
+  color: #091549;
+}
+
+.authContainer {
+  background-color: #5bc2d9;
+  padding: 10px;
+  width: 400px;
+  border-radius: 5px;
+  width: 260px;
+}
+
+#login,
+#signup {
+  border-radius: 5px;
+  background-color: #e1ccc3;
+  color: #1670c4;
+  padding: 10px;
+  width: 240px;
+  height: 150px;
+}
+
+.username,
+.password {
+  display: flex;
+  margin: 5px;
+  border-radius: 4px;
+  border-width: 0.5px;
+  border-color: lightgray;
+  width: 150px;
+  margin-bottom: 5px;
+  background-color: #5bc2d9;
+}
+
+.submit {
+  display: flex;
+  margin: 5px;
+  border-radius: 4px;
+  border-width: 0.5px;
+  border-color: lightgray;
+  font-size: 12px;
+  margin-bottom: 7px;
+  padding: 3px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: #091549;
+  color: white;
+}
+
+.submit:hover {
+  cursor: pointer;
+  background-color: darken(#0e6e96, 10%);
+}
+
+a {
+  display: flex;
+  border: 1px solid black;
+  padding: 3px;
+  border-radius: 5px;
+  width: 100px;
+  font-size: 13px;
+  background-color: #5bc2d9;
+  color: black;
+  margin-left: 4px;
+  border-width: 0.5px;
+  border-color: lightgray;
+  padding-left: 5px;
+}
+
+a:hover {
+  background-color: darken(#5bc2d9, 10%);
+  cursor: pointer;
+}
+
+.errorMessage {
+  margin-top: 10px;
+  margin-left: 5px;
+  // background-color: red;
+  color: red;
+  font-size: 13px;
 }
