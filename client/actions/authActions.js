@@ -34,20 +34,12 @@ const postLoginRequest = () => ({
 
 const postLoginSuccess = loggedIn => ({
   type: POST_LOGIN_SUCCESS,
-  payload: {
-    auth: {
-      loggedin,
-    },
-  },
+  payload: loggedIn,
 });
 
 const postLoginFailure = err => ({
   type: POST_LOGIN_FAILURE,
-  payload: {
-    auth: {
-      err,
-    },
-  },
+  payload: err,
 });
 
 export const postSignup = ({ username, password }) => dispatch => {
@@ -77,18 +69,10 @@ const postSignupRequest = () => ({
 
 const postSignupSuccess = loggedIn => ({
   type: POST_SIGNUP_SUCCESS,
-  payload: {
-    auth: {
-      loggedin,
-    },
-  },
+  payload: loggedin,
 });
 
 const postSignupFailure = err => ({
   type: POST_SIGNUP_FAILURE,
-  payload: {
-    auth: {
-      err,
-    },
-  },
+  payload: err,
 });
