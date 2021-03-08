@@ -81,7 +81,7 @@ app.get(
   }
 );
 
-app.post(
+app.put(
   '/high-score',
   sessionController.isLoggedIn,
   scoreController.getHighScore,
