@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import AuthContainer from './AuthContainer';
+import CardContainer from './CardContainer';
 
 const mapStateToProps = state => ({
   loggedIn: state.auth.loggedIn,
@@ -8,7 +9,7 @@ const mapStateToProps = state => ({
 
 const MainContainer = props => {
   const auth = props.loggedIn ? (
-    'CARD CONTAINER TO RENDER HERE'
+    <CardContainer />
   ) : (
     <AuthContainer />
   );
