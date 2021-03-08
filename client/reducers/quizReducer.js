@@ -10,6 +10,8 @@ const initialState = {
             ],
           answer: 0,
         },
+  highScore: 0,
+  currentScore: 0,
   cardsThisSession: 1,
   correctAnswers: 0,
 };
@@ -24,7 +26,7 @@ const quizReducer = (state = initialState, action) => {
                 correctAnswers,
             }
         }
-        case types.GET_NEW_CARD: {
+        case types.NEW_CARD_RECEIVED: {
           let card = action.payload
           let cardsThisSession = state.cardsThisSession + 1;
               return{
@@ -33,6 +35,9 @@ const quizReducer = (state = initialState, action) => {
                 cardsThisSession,
               }
             }
+        case types.NEW_CARD_REQUEST: {
+          return {...state}
+        }
         default:{
             return {...state}
         }
