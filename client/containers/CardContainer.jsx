@@ -17,11 +17,9 @@ const mapDispatchToProps = {
 class CardContainer extends Component {
     constructor(props){
         super(props);
-        //this.handleQuizAnswer = this.handleQuizAnswer.bind(this);** Uncomment if used between here and render
     }
  
     render() {
-        //handleQuizAnswer= {this.handleQuizAnswer} **this was a prop in cards**
         console.log('props in cardcontainer', this.props)
         return(
             <div>

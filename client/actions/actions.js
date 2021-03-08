@@ -2,7 +2,6 @@ import * as types from './actionTypes';
 
 export const getNewCard = () => ({
     type: types.GET_NEW_CARD,
-    payload: null,
 })
 
 export const correctChoice = (num) => ({
