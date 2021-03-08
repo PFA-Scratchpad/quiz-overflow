@@ -17,18 +17,20 @@ const quizReducer = (state = initialState, action) => {
 
     switch(action.type){
         case types.CORRECT_CHOICE: {
+          console.log('correct again')
+          let correctAnswers = state.correctAnswers + action.payload;
             return {
                 ...state,
-                correctAnswers: state.correctAnswers + 1,
+                correctAnswers,
             }
         }
-        case types.WRONG_CHOICE {
-            return {
-                ...state,
+        case types.GET_NEW_CARD: {
+              return{
+                ...state
+              }
             }
-        }
         default:{
-            return state
+            return {...state}
         }
     }
 

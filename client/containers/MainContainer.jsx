@@ -1,13 +1,18 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React, { Component } from 'react';
 import CardContainer from './CardContainer';
-const MainContainer = (props) => {
+
+class MainContainer extends Component {
+    constructor(props) {
+        super(props);
+    }
+    render(){ 
     return (
         <div>
             <p>MainContainer Render</p>
         <CardContainer />
         </div>
-    )
-}
+        )
+    };
+};
 
 export default MainContainer;

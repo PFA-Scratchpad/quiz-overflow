@@ -1,11 +1,11 @@
 import * as types from './actionTypes';
 
-export const wrongChoice = () => ({
-    type: types.WRONG_CHOICE,
-    payload:null,
+export const getNewCard = () => ({
+    type: types.GET_NEW_CARD,
+    payload: null,
 })
 
-export const correctChoice = () => ({
+export const correctChoice = (num) => ({
     type: types.CORRECT_CHOICE,
-    payload: null,
+    payload: 1,
 })
