@@ -13,7 +13,8 @@ npm i
 npm run build
 ```
 
-You will need to create your own `.env` file in the root directory of the project to ensure safe storage of your MongoDB Atlas database.
+Create a `.env` file in the root directory of the project to store the ElephanQL database URI.
+Please ask @john-li7 for the creds.
 
 ```
 pgURI='postgres://<username>:<password>@ziggy.db.elephantsql.com:5432/wrjmrzcc'
