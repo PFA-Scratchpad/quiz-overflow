@@ -12,16 +12,15 @@ Install all packages
 npm i
 ```
 
-You will need to create your own `.env` file in the root directory to ensure safe storage of your MongoDB Atlas database.
+You will need to create your own `.env` file in the root directory of the project to ensure safe storage of your MongoDB Atlas database.
 
 ```
 pgURI='postgres://<username>:<password>@ziggy.db.elephantsql.com:5432/wrjmrzcc'
-
 ```
 
 ## Contributors
 
-@Carthanial - Christopher Carney
-@dwaynerichards - Dwayne Richards
-@john-li7 - John Li
-@unknownbreaker - Robert Yang
+* @Carthanial - Christopher Carney
+* @dwaynerichards - Dwayne Richards
+* @john-li7 - John Li
+* @unknownbreaker - Robert Yang
