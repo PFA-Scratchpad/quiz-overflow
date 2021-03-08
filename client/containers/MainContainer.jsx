@@ -8,6 +8,7 @@ const mapStateToProps = state => ({
 });
 
 const MainContainer = props => {
+
   const auth = props.loggedIn ? (
     <CardContainer />
   ) : (
@@ -15,6 +16,7 @@ const MainContainer = props => {
   );
 
   return auth;
+
 };
 
 export default connect(mapStateToProps)(MainContainer);

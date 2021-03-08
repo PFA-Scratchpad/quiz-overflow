@@ -55,7 +55,11 @@ class AuthContainer extends Component {
     ) : (
       <Login {...this.props} />
     );
-    return form;
+    return (
+      <div className="authContainer">
+      {form}
+      </div>
+      );
   }
 }
 
