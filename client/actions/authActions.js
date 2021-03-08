@@ -72,7 +72,7 @@ const postSignupRequest = () => ({
 
 const postSignupSuccess = loggedIn => ({
   type: POST_SIGNUP_SUCCESS,
-  payload: { loggedin, message },
+  payload: { loggedIn, message },
 });
 
 const postSignupFailure = err => ({
