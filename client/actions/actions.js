@@ -1,6 +1,5 @@
 import * as types from './actionTypes';
 
-
 export const wrongChoice = () => ({
     type: types.WRONG_CHOICE,
     payload:null,
