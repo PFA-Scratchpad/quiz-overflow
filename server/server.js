@@ -7,6 +7,7 @@ const quizController = require('./controllers/quizController');
 const userController = require('./controllers/userController');
 const cookieController = require('./controllers/cookieController');
 const sessionController = require('./controllers/sessionController');
+const scoreController = require('./controllers/scoreController');
 
 const app = express();
 
@@ -63,6 +64,30 @@ app.get(
     console.log('session cookieSessionMatch', res.locals.cookieSessionMatch);
     // after frontend is ready to test, see if we can redirect to '/' in the case a session expires
     // after logging in or if we need to send a res.locals with empty key values for question and choices.
+    if (!res.locals.cookieSessionMatch)
+      return res.status(200).json('Invalid session');
+    return res.status(200).json(res.locals);
+  }
+);
+
+app.get(
+  '/high-score',
+  sessionController.isLoggedIn,
+  scoreController.getHighScore,
+  (req, res) => {
+    if (!res.locals.cookieSessionMatch)
+      return res.status(200).json('Invalid session');
+    return res.status(200).json(res.locals);
+  }
+);
+
+app.put(
+  '/high-score',
+  sessionController.isLoggedIn,
+  scoreController.getHighScore,
+  scoreController.updateHighScore,
+  scoreController.getHighScore,
+  (req, res) => {
     if (!res.locals.cookieSessionMatch)
       return res.status(200).json('Invalid session');
     return res.status(200).json(res.locals);

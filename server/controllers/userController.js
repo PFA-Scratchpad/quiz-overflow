@@ -25,12 +25,22 @@ userController.createUser = (req, res, next) => {
           } else {
             const addedUserQuery = `SELECT _id FROM users WHERE username = '${username}'`;
             db.query(addedUserQuery, (err2, queryRes2) => {
-              if (err) {
+              if (err2) {
                 console.log('err in addedUserQuery ', err2);
                 return next(err2);
               } else {
                 res.locals.userRecord = queryRes2.rows[0];
                 res.locals.loggedIn = true;
+                // create record in high_score table for added user
+                const addHighScoreQuery = `INSERT INTO high_score (users_id) VALUES (${res.locals.userRecord._id})`;
+                db.query(addHighScoreQuery, (err3, queryRes3) => {
+                  if (err3) {
+                    console.log('err in addHighScoreQuery ', err3);
+                    return next(err3);
+                  } else {
+                    return next();
+                  }
+                });
                 return next();
               }
             });

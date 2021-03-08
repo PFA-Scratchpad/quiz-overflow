@@ -21,7 +21,8 @@ export const postLogin = ({ username, password }) => dispatch => {
     .then(data => data.json())
     .then(data => {
       if (data && data.loggedIn !== undefined) {
-        dispatch(postLoginSuccess(data.loggedIn));
+        data.loginFailure = !data.loggedIn ? true : false;
+        dispatch(postLoginSuccess(data));
       }
     })
     .catch(data => {
@@ -33,9 +34,13 @@ const postLoginRequest = () => ({
   type: POST_LOGIN_REQUEST,
 });
 
-const postLoginSuccess = loggedIn => ({
+const postLoginSuccess = payload => ({
   type: POST_LOGIN_SUCCESS,
-  payload: loggedIn,
+  payload: {
+    loggedIn: payload.loggedIn,
+    message: payload.message,
+    loginFailure: payload.loginFailure,
+  },
 });
 
 const postLoginFailure = err => ({
@@ -56,7 +61,8 @@ export const postSignup = ({ username, password }) => dispatch => {
     .then(data => data.json())
     .then(data => {
       if (data && data.loggedIn !== undefined) {
-        dispatch(postSignupSuccess(data.loggedIn));
+        data.loginFailure = !data.loggedIn ? true : false;
+        dispatch(postSignupSuccess(data));
       }
     })
     .catch(data => {
@@ -68,9 +74,13 @@ const postSignupRequest = () => ({
   type: POST_SIGNUP_REQUEST,
 });
 
-const postSignupSuccess = loggedIn => ({
+const postSignupSuccess = payload => ({
   type: POST_SIGNUP_SUCCESS,
-  payload: loggedin,
+  payload: {
+    loggedIn: payload.loggedIn,
+    message: payload.message,
+    loginFailure: payload.loginFailure,
+  },
 });
 
 const postSignupFailure = err => ({
