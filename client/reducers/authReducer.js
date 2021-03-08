@@ -2,6 +2,7 @@ import * as types from '../actions/actionTypes';
 
 const initialState = {
   loggedIn: false,
+  message: null,
   showSignup: false,
   err: null,
 };
@@ -14,9 +15,11 @@ const authReducer = (state = initialState, action) => {
       };
     }
     case types.POST_LOGIN_SUCCESS: {
+      const { loggedIn, message } = action.payload;
       return {
         ...state,
-        loggedIn: action.payload,
+        loggedIn,
+        message,
       };
     }
     case types.POST_LOGIN_FAILURE: {
@@ -31,9 +34,11 @@ const authReducer = (state = initialState, action) => {
       };
     }
     case types.POST_SIGNUP_SUCCESS: {
+      const { loggedIn, message } = action.payload;
       return {
         ...state,
-        loggedIn: action.payload,
+        loggedIn,
+        message,
       };
     }
     case types.POST_SIGNUP_FAILURE: {

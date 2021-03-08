@@ -20,6 +20,7 @@ export const postLogin = ({ username, password }) => dispatch => {
   })
     .then(data => data.json())
     .then(data => {
+      console.log('login thing', data);
       if (data && data.loggedIn !== undefined) {
         dispatch(postLoginSuccess(data.loggedIn));
       }
@@ -35,7 +36,7 @@ const postLoginRequest = () => ({
 
 const postLoginSuccess = loggedIn => ({
   type: POST_LOGIN_SUCCESS,
-  payload: loggedIn,
+  payload: { loggedIn, message },
 });
 
 const postLoginFailure = err => ({
@@ -55,6 +56,7 @@ export const postSignup = ({ username, password }) => dispatch => {
   })
     .then(data => data.json())
     .then(data => {
+      console.log('sign up thing', data);
       if (data && data.loggedIn !== undefined) {
         dispatch(postSignupSuccess(data.loggedIn));
       }
@@ -70,7 +72,7 @@ const postSignupRequest = () => ({
 
 const postSignupSuccess = loggedIn => ({
   type: POST_SIGNUP_SUCCESS,
-  payload: loggedin,
+  payload: { loggedin, message },
 });
 
 const postSignupFailure = err => ({
