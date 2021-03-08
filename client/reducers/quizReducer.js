@@ -22,10 +22,13 @@ const quizReducer = (state = initialState, action) => {
           console.log('correct at reducer')
           let correctAnswers = state.correctAnswers + action.payload;
           let currentScore = state.currentScore + action.payload;
+          let highScore;
+          if(currentScore > state.highScore)  highScore = currentScore;
             return {
                 ...state,
                 correctAnswers,
                 currentScore,
+                highScore, 
             }
         }
         case types.NEW_CARD_RECEIVED: {
