@@ -7,6 +7,8 @@ import Signup from '../components/Signup';
 
 const mapStateToProps = state => ({
   showSignup: state.auth.showSignup,
+  message: state.auth.message,
+  loginFailure: state.auth.loginFailure,
 });
 
 const mapDispatchToProps = dispatch => ({
