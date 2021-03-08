@@ -14,8 +14,13 @@ const Card = (props) => (
      for (let i = 0; i < 4; i++){
          if(e.target[i].checked){
            if(e.target[i].attributes.iscorrect.value === 'true') {
-               props.correctChoice(1)
+               props.correctChoice(1) 
                console.log('correct')
+               if(props.currentScore > props.highScore) {
+                 props.newHighScore(props.currentScore)
+                 props.updateHighScore(props.currentScore)
+                 console.log('New Highscore!!!')
+               }
             }
            else console.log('wrong');
          } 
