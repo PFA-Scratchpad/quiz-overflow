@@ -6,6 +6,7 @@ class Login extends Component {
   }
 
   render() {
+    const errorMsg = <span className="error">{this.props.message}</span>;
     return (
       <div id="login">
         <form id="loginForm" onSubmit={this.props.handleLogin}>
@@ -16,6 +17,7 @@ class Login extends Component {
         <a onClick={this.props.goToSignup} name="#">
           Need an account?
         </a>
+        {this.props.loginFailure ? errorMsg : ''}
       </div>
     );
   }
