@@ -5,7 +5,6 @@ import Login from '../components/Login';
 import Signup from '../components/Signup';
 
 const mapStateToProps = state => ({
-  loggedIn: state.auth.loggedIn,
   showSignup: state.auth.showSignup,
 });
 
