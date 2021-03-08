@@ -4,6 +4,7 @@ const initialState = {
   loggedIn: false,
   message: null,
   showSignup: false,
+  loginFailure: false,
   err: null,
 };
 
@@ -15,11 +16,13 @@ const authReducer = (state = initialState, action) => {
       };
     }
     case types.POST_LOGIN_SUCCESS: {
-      const { loggedIn, message } = action.payload;
+      console.log('in reducer', action);
+      const { loggedIn, message, loginFailure } = action.payload;
       return {
         ...state,
         loggedIn,
         message,
+        loginFailure,
       };
     }
     case types.POST_LOGIN_FAILURE: {
@@ -34,11 +37,12 @@ const authReducer = (state = initialState, action) => {
       };
     }
     case types.POST_SIGNUP_SUCCESS: {
-      const { loggedIn, message } = action.payload;
+      const { loggedIn, message, loginFailure } = action.payload;
       return {
         ...state,
         loggedIn,
         message,
+        loginFailure,
       };
     }
     case types.POST_SIGNUP_FAILURE: {
