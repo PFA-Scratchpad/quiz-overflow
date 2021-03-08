@@ -4,9 +4,9 @@ const initialState = {
   card: { question: 'This will be a question.',
           choices: [
             {_id: 1, text: 'string1', is_correct: true},
-            {id: 2, text: 'string2', isCorrect: false},
-            {id: 3, text: 'string3', isCorrect: false},
-            {id: 4, text: 'string4', isCorrect: false}
+            {_id: 2, text: 'string2', is_correct: false},
+            {_id: 3, text: 'string3', is_correct: false},
+            {_id: 4, text: 'string4', is_correct: false}
             ],
         },
   highScore: 0,
