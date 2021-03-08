@@ -7,6 +7,8 @@ const mapStateToProps = state => ({
     card: state.quiz.card,
     cardsThisSession: state.quiz.cardsThisSession,
     correctAnswers: state.quiz.correctAnswers,
+    currentScore: state.quiz.currentScore,
+    highScore: state.quiz.highScore,
 });
 
 const mapDispatchToProps = {
@@ -30,9 +32,8 @@ class CardContainer extends Component {
             card={this.props.card}
             />
             <div>
-            <p>Stats Render Here</p>
-            <p>Correct: {this.props.correctAnswers}</p>
-            <p>Total Questions: {this.props.cardsThisSession}</p>
+            <p>High Score: {this.props.highScore}</p>
+            <p>Current Score: {this.props.currentScore}</p>
             <button onClick={() => this.props.getNewCard()}>Gets Another Question</button>
             </div>
             </div>

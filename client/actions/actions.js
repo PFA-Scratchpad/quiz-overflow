@@ -13,5 +13,5 @@ export const getNewCard = () => dispatch => {
 
 export const correctChoice = (num) => ({
     type: types.CORRECT_CHOICE,
-    payload: 1,
+    payload: num,
 })
