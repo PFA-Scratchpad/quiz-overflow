@@ -15,7 +15,9 @@ class Signup extends Component {
           <input className="submit" type="submit" value="Sign up" />
         </form>
         <a onClick={this.props.goToLogin}>Have an account already?</a>
+        <div className="errorMessage">
         {this.props.loginFailure ? errorMsg : ''}
+        </div>
       </div>
     );
   }

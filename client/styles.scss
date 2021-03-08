@@ -8,7 +8,7 @@ body {
   padding: 10px;
   width: 400px;
   border-radius: 5px;
-  width: 250px;
+  width: 260px;
 }
 
 #login,
@@ -17,8 +17,8 @@ body {
   background-color: #e1ccc3;
   color: #1670c4;
   padding: 10px;
-  width: 220px;
-  height: 130px;
+  width: 240px;
+  height: 150px;
 }
 
 .username,
@@ -71,4 +71,12 @@ a {
 a:hover {
   background-color: darken(#5bc2d9, 10%);
   cursor: pointer;
+}
+
+.errorMessage {
+  margin-top: 10px;
+  margin-left: 5px;
+  // background-color: red;
+  color: red;
+  font-size: 13px;
 }

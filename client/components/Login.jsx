@@ -14,10 +14,12 @@ class Login extends Component {
           <input className="password" name="password" placeholder="Password" type="password" />
           <input className="submit" type="submit" name="submit" value="Sign in" />
         </form>
-        <a className="alternateOption" onClick={this.props.goToSignup} name="#">
+        <a onClick={this.props.goToSignup} name="#">
           Need an account?
         </a>
+        <div className="errorMessage">
         {this.props.loginFailure ? errorMsg : ''}
+        </div>
       </div>
     );
   }
