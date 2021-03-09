@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 
 const MainContainer = props => {
 
-  const auth = props.loggedIn ? (
+  const auth = props.loggedIn ? (  
     <CardContainer />
   ) : (
     <AuthContainer />
