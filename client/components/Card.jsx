@@ -29,15 +29,15 @@ const Card = (props) => (
     <div>
     <label>{props.card.question}</label><br></br>
     <br></br>
-  <input type="radio" name="quiz" value="choice1" iscorrect={`${props.card.choices[0].is_correct}`}/> {props.card.choices[0].text}<br></br>
+  <input type="radio" name="quiz" value="choice1" iscorrect={`${props.card.choices[0].is_correct}`} /> {props.card.choices[0].text}
   <br></br>
-  <input type="radio" name="quiz" value="choice2" iscorrect={`${props.card.choices[1].is_correct}`}/> {props.card.choices[1].text}<br></br>
+  <input type="radio" name="quiz" value="choice2" iscorrect={`${props.card.choices[1].is_correct}`} /> {props.card.choices[1].text}
   <br></br>
-  <input type="radio" name="quiz" value="choice3" iscorrect={`${props.card.choices[2].is_correct}`}/> {props.card.choices[2].text}<br></br>
+  <input type="radio" name="quiz" value="choice3" iscorrect={`${props.card.choices[2].is_correct}`} /> {props.card.choices[2].text}
   <br></br>
-  <input type="radio" name="quiz" value="choice4" iscorrect={`${props.card.choices[3].is_correct}`}/> {props.card.choices[3].text}<br></br>
+  <input type="radio" name="quiz" value="choice4" iscorrect={`${props.card.choices[3].is_correct}`} /> {props.card.choices[3].text}
   </div><br></br>
-  <input type='submit' value='submit'/>
+  <input className='submit' type='submit' value='submit'/>
 </form>
 
 </div> 

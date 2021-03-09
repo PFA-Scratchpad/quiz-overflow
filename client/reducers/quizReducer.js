@@ -1,12 +1,12 @@
 import * as types from '../actions/actionTypes';
 /* initialState.card is a dummy value. Needs to be changed when backend connected */
 const initialState = {
-  card: { question: 'This will be a question.',
+  card: { question: 'Click for a question!',
           choices: [
-            {_id: 1, text: 'string1', is_correct: true},
-            {_id: 2, text: 'string2', is_correct: false},
-            {_id: 3, text: 'string3', is_correct: false},
-            {_id: 4, text: 'string4', is_correct: false}
+            {_id: 1, text: '', is_correct: true},
+            {_id: 2, text: '', is_correct: false},
+            {_id: 3, text: '', is_correct: false},
+            {_id: 4, text: '', is_correct: false}
             ],
         },
   highScore: 0,

@@ -31,8 +31,9 @@ class CardContainer extends Component {
     render() {
         console.log('props in cardcontainer', this.props)
         return(
-            <div>
+            <div id="card">
             <Card 
+            getNewCard={this.props.getNewCard}
             currentScore={this.props.currentScore}
             newHighScore={this.props.newHighScore}
             highScore={this.props.highScore}
@@ -45,7 +46,7 @@ class CardContainer extends Component {
             <div>
             <p>High Score: {this.props.highScore}</p>
             <p>Current Score: {this.props.currentScore}</p>
-            <button onClick={() => this.props.getNewCard()}>Gets Another Question</button>
+            <a onClick={() => this.props.getNewCard()}>Next Question</a>
             </div>
             </div>
         )
